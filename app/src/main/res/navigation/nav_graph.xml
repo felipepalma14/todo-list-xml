@@ -16,22 +16,22 @@
     </fragment>
     <fragment
         android:id="@+id/TodoList"
-        android:name="com.felipepalma14.todolist.TodoListFragment"
+        android:name="com.felipepalma14.todolist.presentation.TodoListFragment"
         android:label="@string/todo_list_label"
         tools:layout="@layout/fragment_todo_list">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_todo_list_to_add_todo"
+            app:destination="@id/AddTodo" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.felipepalma14.todolist.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/AddTodo"
+        android:name="com.felipepalma14.todolist.presentation.AddTodoFragment"
+        android:label="@string/add_todo"
+        tools:layout="@layout/fragment_add_todo">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_add_todo_to_todo_list"
             app:destination="@id/TodoList" />
     </fragment>
 </navigation>

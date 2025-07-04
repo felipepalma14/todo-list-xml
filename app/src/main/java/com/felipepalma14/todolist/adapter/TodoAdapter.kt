@@ -1,5 +1,6 @@
 package com.felipepalma14.todolist.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,13 @@ class TodoAdapter(private val items: List<TodoItem>) :
             Priority.MEDIA -> "Média"
             Priority.BAIXA -> "Baixa"
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(newItems: List<TodoItem>) {
+        (items as MutableList).clear()
+        items.addAll(newItems)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = items.size

@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
             }
 
             buttonRegister.setOnClickListener {
-                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                //findNavController().navigate(R.id.action_todo_list_to_add_todo)
             }
         }
     }
