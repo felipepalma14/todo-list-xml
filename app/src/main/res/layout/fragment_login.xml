@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="32dp"
-    tools:context="com.felipepalma14.auth.LoginFragment">
+    tools:context=".auth.LoginFragment">
 
     <TextView
         android:layout_width="match_parent"

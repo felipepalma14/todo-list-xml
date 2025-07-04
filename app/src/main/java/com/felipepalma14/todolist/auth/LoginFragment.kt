@@ -1,4 +1,4 @@
-package com.felipepalma14.auth
+package com.felipepalma14.todolist.auth
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.felipepalma14.todolist.R
 import com.felipepalma14.todolist.databinding.FragmentLoginBinding
-import com.felipepalma14.todolist.databinding.FragmentTodoListBinding
 
 class LoginFragment : Fragment() {
 

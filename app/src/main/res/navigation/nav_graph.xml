@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/Login"
-        android:name="com.felipepalma14.auth.LoginFragment"
+        android:name="com.felipepalma14.todolist.auth.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/TodoList"
         android:name="com.felipepalma14.todolist.TodoListFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/todo_list_label"
         tools:layout="@layout/fragment_todo_list">
 
         <action

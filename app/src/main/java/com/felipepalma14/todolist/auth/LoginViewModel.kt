@@ -1,4 +1,4 @@
-package com.felipepalma14.auth
+package com.felipepalma14.todolist.auth
 
 import androidx.lifecycle.ViewModel
 

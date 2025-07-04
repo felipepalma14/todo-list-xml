@@ -1,10 +1,15 @@
 package com.felipepalma14.todolist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.felipepalma14.todolist.adapter.TodoAdapter
+import com.felipepalma14.todolist.data.Priority
+import com.felipepalma14.todolist.data.Status
+import com.felipepalma14.todolist.data.TodoItem
 import com.felipepalma14.todolist.databinding.FragmentTodoListBinding
 
 class TodoListFragment : Fragment() {
@@ -26,6 +31,17 @@ class TodoListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val recyclerView = binding.recyclerViewTodos
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // Exemplo de dados
+        val items = listOf(
+            TodoItem("Comprar pão", Status.CONCLUIDO, Priority.BAIXA),
+            TodoItem("Estudar Kotlin", Status.EM_ANDAMENTO, Priority.ALTA),
+            TodoItem("Fazer exercícios", Status.NAO_INICIADO, Priority.MEDIA)
+        )
+
+        recyclerView.adapter = TodoAdapter(items)
     }
 
     override fun onDestroyView() {
