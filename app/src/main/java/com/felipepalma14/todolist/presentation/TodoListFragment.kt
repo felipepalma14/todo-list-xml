@@ -40,9 +40,13 @@ class TodoListFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(TodoViewModel::class.java)
         viewModel.todos.observe(viewLifecycleOwner, Observer { data ->
             // Update UI with new data
-            recyclerView.adapter = TodoAdapter(data)
+            recyclerView.adapter = TodoAdapter(data, ::onClick)
         }
         )
+    }
+
+    fun onClick(item: TodoItem){
+        viewModel.editTodo(item)
     }
 
     override fun onDestroyView() {

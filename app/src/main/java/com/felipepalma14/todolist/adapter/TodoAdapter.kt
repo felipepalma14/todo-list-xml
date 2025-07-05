@@ -11,8 +11,10 @@ import com.felipepalma14.todolist.data.Priority
 import com.felipepalma14.todolist.data.Status
 import com.felipepalma14.todolist.data.TodoItem
 
-class TodoAdapter(private val items: List<TodoItem>) :
-    RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
+class TodoAdapter(
+    private val items: List<TodoItem>,
+    private val onClick: (TodoItem) -> Unit
+) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
     class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.textViewTitle)
@@ -39,13 +41,9 @@ class TodoAdapter(private val items: List<TodoItem>) :
             Priority.MEDIA -> "Média"
             Priority.BAIXA -> "Baixa"
         }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun submitList(newItems: List<TodoItem>) {
-        (items as MutableList).clear()
-        items.addAll(newItems)
-        notifyDataSetChanged()
+        holder.itemView.setOnClickListener {
+            onClick(items[position])
+        }
     }
 
     override fun getItemCount(): Int = items.size
