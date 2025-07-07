@@ -23,7 +23,7 @@ class TodoViewModel: ViewModel() {
         }
     }
 
-    fun editTodo(todo: TodoItem){
+    fun saveToEditTodo(todo: TodoItem){
         CoroutineScope(Dispatchers.Main).launch {
             editItem = todo
         }
@@ -32,8 +32,7 @@ class TodoViewModel: ViewModel() {
     fun updateTodo(todo: TodoItem){
         CoroutineScope(Dispatchers.Main).launch {
             todos.value?.let {
-                it.add(todo.id,todo)
-                todos.value = it
+                it[todo.id] = todo
             }
             editItem = null
         }

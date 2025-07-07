@@ -13,7 +13,6 @@ import com.felipepalma14.todolist.data.Priority
 import com.felipepalma14.todolist.data.Status
 import com.felipepalma14.todolist.data.TodoItem
 import com.felipepalma14.todolist.databinding.FragmentDetailsTodoBinding
-import com.felipepalma14.todolist.databinding.FragmentTodoListBinding
 
 class DetailsTodoFragment : Fragment() {
 
@@ -44,15 +43,14 @@ class DetailsTodoFragment : Fragment() {
                 val title = binding.editTextTitle.text.toString()
 
                 if (title.isBlank()) {
-                    Toast.makeText(requireContext(), "Título obrigatório", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Título obrigatório", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
+                viewModel.updateTodo(todoItem.copy(title = title, status = getStatusFromSpinner(), priority = getPriorityFromSpinner()))
 
-                viewModel.addTodo(TodoItem(0, title, getStatusFromSpinner(), getPriorityFromSpinner()))
-                Toast.makeText(requireContext(), "Item atualizado!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Item atualizado!", Toast.LENGTH_SHORT).show()
 
-                findNavController().navigate(R.id.action_details_todo_to_todo_list)
-
+                findNavController().popBackStack()
             }
         }
 
