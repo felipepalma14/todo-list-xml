@@ -1,6 +1,7 @@
 package com.felipepalma14.todolist.data
 
 data class TodoItem(
+    val id: Int,
     val title: String,
     val status: Status,
     val priority: Priority

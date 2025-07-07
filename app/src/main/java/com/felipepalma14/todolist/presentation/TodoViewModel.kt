@@ -10,14 +10,31 @@ import kotlinx.coroutines.launch
 class TodoViewModel: ViewModel() {
     val todos = MutableLiveData<MutableList<TodoItem>>()
 
+    var editItem: TodoItem? = null
+
     fun addTodo(todo: TodoItem) {
         CoroutineScope(Dispatchers.Main).launch {
             todos.value?.let {
-                it.add(todo)
+                it.add(todo.copy(id = it.size))
                 todos.value = it
             } ?: run {
                 todos.value = mutableListOf(todo)
             }
+        }
+    }
+
+    fun saveToEditTodo(todo: TodoItem){
+        CoroutineScope(Dispatchers.Main).launch {
+            editItem = todo
+        }
+    }
+
+    fun updateTodo(todo: TodoItem){
+        CoroutineScope(Dispatchers.Main).launch {
+            todos.value?.let {
+                it[todo.id] = todo
+            }
+            editItem = null
         }
     }
 }

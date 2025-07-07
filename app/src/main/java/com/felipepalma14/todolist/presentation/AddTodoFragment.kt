@@ -45,10 +45,11 @@ class AddTodoFragment : Fragment() {
             }
 
 
-            viewModel.addTodo(TodoItem(title, getStatusFromSpinner(), getPriorityFromSpinner()))
+            viewModel.addTodo(TodoItem(0, title, getStatusFromSpinner(), getPriorityFromSpinner()))
             Toast.makeText(requireContext(), "Item adicionado!", Toast.LENGTH_SHORT).show()
 
-            findNavController().navigate(R.id.action_add_todo_to_todo_list)
+            //findNavController().navigate(R.id.action_add_todo_to_todo_list)
+            findNavController().popBackStack()
 
         }
     }

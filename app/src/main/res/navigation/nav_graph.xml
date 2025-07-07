@@ -13,6 +13,19 @@
         <action
             android:id="@+id/action_login_to_todo_list"
             app:destination="@id/TodoList" />
+
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/Register" />
+    </fragment>
+    <fragment
+        android:id="@+id/Register"
+        android:name="com.felipepalma14.todolist.auth.RegisterFragment"
+        android:label="Registrar"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/Login" />
     </fragment>
     <fragment
         android:id="@+id/TodoList"
@@ -23,6 +36,9 @@
         <action
             android:id="@+id/action_todo_list_to_add_todo"
             app:destination="@id/AddTodo" />
+        <action
+            android:id="@+id/action_todo_list_to_details_todo"
+            app:destination="@id/DetailsTodo" />
     </fragment>
     <fragment
         android:id="@+id/AddTodo"
@@ -32,6 +48,16 @@
 
         <action
             android:id="@+id/action_add_todo_to_todo_list"
+            app:destination="@id/TodoList" />
+    </fragment>
+    <fragment
+        android:id="@+id/DetailsTodo"
+        android:name="com.felipepalma14.todolist.presentation.DetailsTodoFragment"
+        android:label="@string/add_todo"
+        tools:layout="@layout/fragment_details_todo">
+
+        <action
+            android:id="@+id/action_details_todo_to_todo_list"
             app:destination="@id/TodoList" />
     </fragment>
 </navigation>

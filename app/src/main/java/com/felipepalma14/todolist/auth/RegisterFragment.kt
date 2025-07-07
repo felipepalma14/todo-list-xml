@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.felipepalma14.todolist.R
-import com.felipepalma14.todolist.databinding.FragmentLoginBinding
+import com.felipepalma14.todolist.databinding.FragmentRegisterBinding
 
-class LoginFragment : Fragment() {
+class RegisterFragment : Fragment() {
 
     private val viewModel: AuthViewModel by viewModels()
 
-    private var _binding: FragmentLoginBinding? = null
+    private var _binding: FragmentRegisterBinding? = null
 
     private val binding get() = _binding!!
 
@@ -22,7 +22,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -31,29 +31,23 @@ class LoginFragment : Fragment() {
 
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
             when (uiState) {
-                is AuthState.Navigate.ToTodoList -> {
-                    findNavController().navigate(R.id.action_login_to_todo_list)
-                }
-                is AuthState.Navigate.ToRegister -> {
-                    findNavController().navigate(R.id.action_login_to_register)
+                is AuthState.Navigate.ToLogin -> {
+                    findNavController().navigate(R.id.action_register_to_login)
                 }
                 is AuthState.Error -> {
                     // Handle error state, e.g., show a Toast or Snackbar
-                    binding.editTextEmail.error = uiState.message
+                    binding.editTextConfirmPassword.error = uiState.message
                     binding.editTextPassword.error = uiState.message
                 }
                 else -> Unit
             }
         }
         with(binding) {
-            buttonConfirm.setOnClickListener {
+            buttonRegister.setOnClickListener {
                 val email = editTextEmail.text.toString()
                 val password = editTextPassword.text.toString()
-                viewModel.login(email, password)
-            }
-
-            buttonRegister.setOnClickListener {
-                viewModel.navigateToRegister()
+                val confirmPassword = editTextPassword.text.toString()
+                viewModel.register(email, password,confirmPassword)
             }
         }
     }
